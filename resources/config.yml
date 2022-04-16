@@ -1,0 +1,6 @@
+# Resource pack encryption configuration file
+# This file is used to parse the encrypted resource pack data
+# Usage:
+# resource-packs:
+#     uuid-of-resource-pack: content-key
+resource-packs: []

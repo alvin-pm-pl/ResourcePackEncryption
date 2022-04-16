@@ -1,0 +1,7 @@
+name: ResourcePackEncryption
+author: alvin0319
+main: alvin0319\ResourcePackEncryption\Loader
+version: 1.0.0
+api: 4.0.0
+
+load: STARTUP
