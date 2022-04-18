@@ -7,6 +7,7 @@ namespace alvin0319\ResourcePackEncryption;
 use pocketmine\event\EventPriority;
 use pocketmine\event\server\DataPacketSendEvent;
 use pocketmine\network\mcpe\protocol\ResourcePacksInfoPacket;
+use pocketmine\network\mcpe\protocol\types\resourcepacks\ResourcePackInfoEntry;
 use pocketmine\plugin\PluginBase;
 
 final class Loader extends PluginBase{
@@ -31,12 +32,7 @@ final class Loader extends PluginBase{
 					foreach($packet->resourcePackEntries as $index => $entry){
 						if(isset($this->encryptionKeys[$entry->getPackId()])){
 							$contentId = $this->encryptionKeys[$entry->getPackId()];
-							(function() use ($entry, $contentId) : void{
-								/* @noinspection PhpUndefinedFieldInspection */
-								$this->contentId = $entry->getPackId();
-								/* @noinspection PhpUndefinedFieldInspection */
-								$this->encryptionKey = $contentId;
-							})->call($entry);
+							$packet->resourcePackEntries[$index] = new ResourcePackInfoEntry($entry->getPackId(), $entry->getVersion(), $entry->getSizeBytes(), $contentId, $entry->getSubPackName(), $entry->getPackId(), $entry->hasScripts(), $entry->isRtxCapable());
 						}
 					}
 				}
