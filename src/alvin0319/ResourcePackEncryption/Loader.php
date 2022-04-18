@@ -32,7 +32,7 @@ final class Loader extends PluginBase{
 					foreach($packet->resourcePackEntries as $index => $entry){
 						if(isset($this->encryptionKeys[$entry->getPackId()])){
 							$contentId = $this->encryptionKeys[$entry->getPackId()];
-                            $packet->resourcePackEntries[$index] = new ResourcePackInfoEntry($entry->getPackId(), $entry->getVersion(), $entry->getSizeBytes(), $contentId, $entry->getSubPackName(), $entry->getPackId(), $entry->hasScripts(), $entry->isRtxCapable());
+							$packet->resourcePackEntries[$index] = new ResourcePackInfoEntry($entry->getPackId(), $entry->getVersion(), $entry->getSizeBytes(), $contentId, $entry->getSubPackName(), $entry->getPackId(), $entry->hasScripts(), $entry->isRtxCapable());
 						}
 					}
 				}
